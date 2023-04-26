@@ -1,0 +1,8 @@
+setup.cfg
+setup.py
+django_everlasting_sessions/__init__.py
+django_everlasting_sessions.egg-info/PKG-INFO
+django_everlasting_sessions.egg-info/SOURCES.txt
+django_everlasting_sessions.egg-info/dependency_links.txt
+django_everlasting_sessions.egg-info/not-zip-safe
+django_everlasting_sessions.egg-info/top_level.txt
