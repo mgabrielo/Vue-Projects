@@ -59,5 +59,5 @@ def generate_pdf(request, invoice_id):
     )
     pdf = pdfkit.from_string(html, False, configuration=config)
     response = HttpResponse(pdf, content_type="application/pdf")
-    response["COntent Dispostion"] = 'attachment; filename="invoice.pdf"'
+    response["Content Dispostion"] = 'attachment; filename="invoice.pdf"'
     return response
