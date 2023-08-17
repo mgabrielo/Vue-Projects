@@ -10,12 +10,7 @@ import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyB00AjN4eWvFgWSGY_oFOVLBGmbkRLcmrI",
-    authDomain: "vuefireblog-e9110.firebaseapp.com",
-    projectId: "vuefireblog-e9110",
-    storageBucket: "vuefireblog-e9110.appspot.com",
-    messagingSenderId: "741144287290",
-    appId: "1:741144287290:web:194b53ca88eb3cccde7d03"
+
 };
 
 // Initialize Firebase
