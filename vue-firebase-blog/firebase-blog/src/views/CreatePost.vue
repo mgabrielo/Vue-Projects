@@ -32,7 +32,7 @@
 <script>
 import { db, auth, storage } from '../firebase/firebaseInit';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { doc, getDoc, setDoc, addDoc, collection } from "firebase/firestore";
+import { doc, getDoc, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
 import { VueEditor, Quill } from 'vue2-editor'
 import ImageResize from "quill-image-resize-vue";
 import Loading from "../components/Loading.vue";
@@ -129,7 +129,7 @@ export default {
                                 const timeStamp = Date.now();
                                 const dbRef = collection(db, "blogPosts")
                                 const user_data = {
-                                    blogID: doc(dbRef).id,
+
                                     blogHTML: this.blogHTML,
                                     blogCoverPhoto: downloadURL,
                                     blogCoverPhotoName: this.blogCoverPhotoName,
@@ -138,10 +138,17 @@ export default {
                                     date: timeStamp
                                 }
 
+
                                 addDoc(dbRef, user_data).then(async (docRef) => {
-                                    await this.$store.dispatch("getPost")
-                                    this.loading = false
-                                    await this.$router.push({ name: 'Blogs' })
+                                    const user_data_id = { blogID: docRef.id, }
+                                    const dbR = doc(db, "blogPosts", docRef.id)
+                                    await updateDoc(dbR, user_data_id)
+                                        .then(async () => {
+                                            await this.$store.dispatch("getPost")
+                                            await this.$router.push({ name: 'Blogs' })
+
+                                        })
+
                                 })
                             });
                             this.$store.dispatch("getPost")

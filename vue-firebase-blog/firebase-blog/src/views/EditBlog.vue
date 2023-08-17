@@ -143,9 +143,8 @@ export default {
                                 const dbRef = doc(db, "blogPosts", this.routeID)
 
 
-                                console.log(docRef)
+                                console.log(this.routeID)
                                 const user_data = {
-                                    // blogID: doc(dbRef).id,
                                     blogHTML: this.blogHTML,
                                     blogCoverPhoto: downloadURL,
                                     blogCoverPhotoName: this.blogCoverPhotoName,
@@ -159,8 +158,9 @@ export default {
                                     this.loading = false
                                     await this.$router.push({ name: 'Blogs' })
                                 })
+
                             });
-                            this.$store.dispatch("getPost")
+                            // this.$store.dispatch("getPost")
                         }
                     );
                     return;
